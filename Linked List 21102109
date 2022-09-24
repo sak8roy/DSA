@@ -1,0 +1,37 @@
+#include<bits/stdc++.h>
+using namespace std;
+struct node{
+int age;
+string name;
+node *prev;
+node *next;
+node(string s,int x){
+age = x;
+name = s;
+next = NULL;
+prev = NULL;
+}
+};
+void printLinkedList(node *head){
+while(head != NULL ){
+cout << head -> name<<"-"<<head->age<<" ";
+head = head -> next;
+}
+}
+int main(){
+node *father = new node ("SANJAY KUMAR ROY",52);
+node *mother = new node ("BIMMI KUMARI",49);
+node *sister = new node ("SHALINI SIDDHI",22);
+node *myself = new node ("SAKET SHUBHAM",20);
+node *head = father ;
+father -> next = mother;
+father -> prev = NULL;
+mother -> prev = father ;
+father -> next -> next = sister;
+sister -> prev = mother ;
+father -> next -> next -> next = myself ;
+myself -> prev = sister ;
+father -> next -> next -> next -> next = NULL; 
+printLinkedList(head);
+return 0;
+}
